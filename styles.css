@@ -1,0 +1,88 @@
+/* General Styling */
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #f39c12; /* Bright orange background */
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  header {
+    text-align: center;
+    background-color: #2c3e50; /* Dark blue background */
+    color: white;
+    padding: 50px 20px;
+  }
+  
+  header h1 {
+    font-size: 2.8em;
+    margin-top: 20px;
+  }
+  
+  header p {
+    font-size: 1.4em;
+    margin-bottom: 0;
+  }
+  
+  .elon-image {
+    width: 300px; /* Larger size for Elon Musk image */
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  main {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: justify; /* Align text properly */
+  }
+  
+  section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  section h2 {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  section h3 {
+    font-size: 1.6em;
+    color: #34495e;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: disc;
+    padding-left: 30px;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .tesla-image {
+    width: 70%; /* Smaller Tesla car image */
+    height: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  footer {
+    text-align: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+  }
+  
