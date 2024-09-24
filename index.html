@@ -1,59 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tribute to Elon Musk</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Responsive Navbar</title>
+    <!-- CSS Styles -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #0fb40f;
+            padding: 10px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .hamburger-menu {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger-menu .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-right: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover {
+            background-color: #12c91b;
+        }
+
+        /* Responsive Styles for Smaller Screens */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex; /* Display hamburger menu */
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: -100%; /* Hide the menu initially */
+                flex-direction: column;
+                background-color: #0aaf1d;
+                width: 100%;
+                padding: 20px;
+                transition: left 0.3s;
+            }
+
+            .nav-links li {
+                margin-bottom: 10px;
+            }
+
+            .nav-links.open {
+                left: 0; /* Show the menu when open */
+            }
+        }
+    </style>
+     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <img src="elon-musk.jpg" alt="Elon Musk" class="elon-image">
-    <h1>Elon Musk: The Visionary Entrepreneur</h1>
-    <p><strong>A man revolutionizing technology, space travel, and sustainable energy.</strong></p>
-  </header>
-
-  <main>
-    <section id="about-elon">
-      <h2><strong>About Elon Musk</strong></h2>
-      <p><strong>Elon Reeve Musk</strong>, born on June 28, 1971, in Pretoria, South Africa, is a visionary entrepreneur and inventor. Known for his ambitious goals of colonizing Mars, accelerating the world’s transition to sustainable energy, and integrating artificial intelligence with human life, Musk has consistently pushed the boundaries of what’s possible.</p>
-
-      <h3><strong>Early Life and Education</strong></h3>
-      <p>Elon Musk moved to the U.S. for higher education, earning degrees in <strong>Economics</strong> and <strong>Physics</strong> from the University of Pennsylvania. His journey into tech began with the creation of <strong>PayPal</strong>, which became a massive success and was sold to eBay. Using the funds from this venture, Musk went on to found <strong>SpaceX</strong>, <strong>Tesla</strong>, <strong>Neuralink</strong>, and <strong>The Boring Company</strong>.</p>
-
-      <h3><strong>Founding of SpaceX and Tesla</strong></h3>
-      <p>Each of these companies is driven by his goal of improving humanity's future and reducing existential risks. <strong>SpaceX</strong> aims to reduce the cost of space travel, while <strong>Tesla</strong> is leading the global transition to electric vehicles and renewable energy.</p>
+    <header>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Job Finder Portal</h1>
+            <button class="hamburger-menu" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#a">About</a></li>
+                <li><a href="#f">Contact Us</a></li>
+                <li><a href="#jobFilters">Search Jobs</a></li>
+                <li><a href="#add">Add a Job</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container1">
+            <h1>Welcome to Job Portal</h1>
+            <h2>Find your dream job today!</h2>
+            <button id="jobSearchBtn">Find a Job</button>
+            <button id="addJobBtn">Add a Job</button>
+        </div>
     </section>
+</header>
 
-    <section id="tesla">
-      <h2><strong>Tesla: Revolutionizing Electric Vehicles</strong></h2>
-      <p>In 2004, Musk joined <strong>Tesla</strong>, a small electric car startup. Under his leadership, Tesla revolutionized the automotive industry by proving that electric vehicles (EVs) could be high-performing, luxurious, and eco-friendly. Tesla's <strong>Model S</strong>, <strong>Model 3</strong>, and <strong>Model X</strong> have set the benchmark for electric cars globally.</p>
+<div class="container">
+    <div id="jobFilters" class="container mt-5">
+        <form class="row">
+            <div class="form-group col-md-3">
+                <label for="filterSalary">Filter by Salary:</label>
+                <input type="number" id="filterSalary" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="filterLocation">Filter by Location:</label>
+                <input type="text" id="filterLocation" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="filterJobType">Filter by Job Type:</label>
+                <select id="filterJobType" class="form-control">
+                    <option value="">All</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Freelancing">Freelancing</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3 mt-4">
+              <button id="search">Search</button>
+          </div>
+        </form>
+    </div>
+    
+    <div id="jobList">
+      
+        <!-- Jobs will be listed here -->
+    </div>
+</div>
 
-      <p>In addition to electric vehicles, Tesla is heavily involved in the development of renewable energy technologies such as <strong>solar panels</strong> and <strong>energy storage systems</strong>. Through innovations like <strong>Powerwall</strong> and <strong>Solar Roof</strong>, Musk aims to build a sustainable energy ecosystem for homes, businesses, and entire cities.</p>
-      <img src="tesla-car.jpg" alt="Tesla Electric Vehicle" class="tesla-image">
-    </section>
+<section id="a">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10 col-xl-8 text-center">
+      <h3 class="mb-4">Testimonials</h3>
+      <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+        Welcome to our job portal! Here's what our users have to say about their experiences
+      </p>
+    </div>
+  </div>
 
-    <section id="key-achievements">
-      <h2><strong>Key Achievements of Elon Musk</strong></h2>
-      <ul>
-        <li><strong>Founded SpaceX</strong> in 2002 to reduce the cost of space travel and make humanity multi-planetary.</li>
-        <li><strong>Transformed Tesla</strong> into the world's leading electric vehicle company with cutting-edge battery technology.</li>
-        <li><strong>Pioneered reusable rockets</strong> at SpaceX, drastically reducing the cost of space travel.</li>
-        <li><strong>Founded Neuralink</strong> to explore merging the human brain with artificial intelligence.</li>
-        <li><strong>Founded The Boring Company</strong> to build tunnels for rapid urban transportation, reducing traffic congestion.</li>
+  <div class="row text-center">
+    <div class="col-md-4 mb-5 mb-md-0">
+      <div class="d-flex justify-content-center mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+          class="rounded-circle shadow-1-strong" width="150" height="150" />
+      </div>
+      <h5 class="mb-3">Maria Smantha</h5>
+      <h6 class="text-primary mb-3">Web Developer</h6>
+      <p class="px-xl-3">
+        <i class="fas fa-quote-left pe-2"></i>I found my dream job through this portal! The user-friendly interface and extensive job listings made the job search process a breeze. Highly recommended!
+      </p>
+      <ul class="list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star-half-alt fa-sm text-warning"></i>
+        </li>
       </ul>
-    </section>
+    </div>
+    <div class="col-md-4 mb-5 mb-md-0">
+      <div class="d-flex justify-content-center mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+          class="rounded-circle shadow-1-strong" width="150" height="150" />
+      </div>
+      <h5 class="mb-3">Lisa Cudrow</h5>
+      <h6 class="text-primary mb-3">Graphic Designer</h6>
+      <p class="px-xl-3">
+        <i class="fas fa-quote-left pe-2"></i>As a graphic designer, finding the right job can be challenging, but this portal made it easy. The filters helped me narrow down my search, and I landed my ideal position within days. Thank you!</p>
+      <ul class="list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4 mb-0">
+      <div class="d-flex justify-content-center mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+          class="rounded-circle shadow-1-strong" width="150" height="150" />
+      </div>
+      <h5 class="mb-3">John Smith</h5>
+      <h6 class="text-primary mb-3">Marketing Specialist</h6>
+      <p class="px-xl-3">
+        <i class="fas fa-quote-left pe-2"></i>I've used many job portals in the past, but none compare to this one. The vast selection of job listings, coupled with the responsive support team, made my job hunt stress-free. I'm grateful for this platform!</p>
+      <ul class="list-unstyled d-flex justify-content-center mb-0">
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="fas fa-star fa-sm text-warning"></i>
+        </li>
+        <li>
+          <i class="far fa-star fa-sm text-warning"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <section id="vision">
-      <h2><strong>Vision for the Future</strong></h2>
-      <p>Musk’s ultimate goal is to make life multi-planetary by colonizing <strong>Mars</strong>, ensuring humanity’s survival. He also aims to solve the global energy crisis through sustainable technologies like <strong>electric vehicles</strong>, <strong>solar energy</strong>, and <strong>energy storage systems</strong>.</p>
+<footer class="text-center text-lg-start bg-body-tertiary text-muted " id="f">
+<!-- Section: Social media -->
+<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+  <!-- Left -->
+  <div class="me-5 d-none d-lg-block">
+    <span>Get connected with us on social networks:</span>
+  </div>
+  <!-- Left -->
 
-      <p>His vision extends to advancing artificial intelligence through <strong>Neuralink</strong>, a company dedicated to developing brain-machine interfaces, potentially offering revolutionary solutions for brain diseases, memory loss, and much more.</p>
-    </section>
-  </main>
+  <!-- Right -->
+  <div>
+    <a href="" class="me-4 text-reset">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fab fa-google"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+  <!-- Right -->
+</section>
+<!-- Section: Social media -->
 
-  <footer>
-    <p>Created by [ANGEL WISDEY G J] | Contact: [6385867100]</p>
-  </footer>
+<!-- Section: Links  -->
+<section class="">
+  <div class="container text-center text-md-start mt-5">
+    <!-- Grid row -->
+    <div class="row mt-3">
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+        <!-- Content -->
+        <h6 class="text-uppercase fw-bold mb-4">
+          <i class="fas fa-gem me-3"></i>Job Portal
+        </h6>
+        <p>
+          Here you can use rows and columns to organize your footer content. Lorem ipsum
+          dolor sit amet, consectetur adipisicing elit.
+        </p>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        <!-- Links -->
+        <h6 class="text-uppercase fw-bold mb-4">
+          Products
+        </h6>
+        <p>
+          <a href="#!" class="text-reset">Angular</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">React</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Vue</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Laravel</a>
+        </p>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+        <!-- Links -->
+        <h6 class="text-uppercase fw-bold mb-4">
+          Useful links
+        </h6>
+        <p>
+          <a href="#!" class="text-reset">Pricing</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Settings</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Orders</a>
+        </p>
+        <p>
+          <a href="#!" class="text-reset">Help</a>
+        </p>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        <!-- Links -->
+        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+        <p><i class="fas fa-home me-3"></i> India</p>
+        <p>
+          <i class="fas fa-envelope me-3"></i>
+          admin@GeeksforGeeks.com
+        </p>
+        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+      </div>
+      <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+  </div>
+</section>
+<!-- Section: Links  -->
+
+<!-- Copyright -->
+<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+  © 2024 Copyright:
+  <a class="text-reset fw-bold" href="https://mdbootstrap.com/">GeeksforGeeks.com</a>
+</div>
+
+</footer>
+
+
+    <script src="script.js">
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("open");
+        }
+    </script>
 </body>
 </html>
